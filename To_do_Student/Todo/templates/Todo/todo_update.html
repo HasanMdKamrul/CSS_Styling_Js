@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col-4 offset-4">
+    <a href="/" class="btn btn-secondary mt-3"> Go to todo_list </a>
+    <h2>Update Todo!</h2>
+    <form class="container mt-5" method="POST">
+        {% csrf_token %}
+        {{todo_form.as_p}}
+        <button class="btn btn-primary" type='submit' >
+            Submit
+        </button>
+    </form> 
+</div>
+{% endblock content %}

@@ -1,0 +1,37 @@
+body{
+    background-color: beige;
+}
+
+
+
+#container{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    height: 100vh;
+    
+}
+
+#Assign{
+    padding: 30px;
+    background-color: rgb(127, 117, 177);
+    color: #fff;
+}
+
+#Output{
+    padding: 30px;
+    background-color: rgb(81, 58, 194);
+    color: #fff;
+}
+
+#operators{
+    padding: 30px;
+    background-color: rgb(80, 68, 142);
+    color: #fff;
+}
+
+#datatype{
+    padding: 30px;
+    background-color: rgb(24, 11, 87);
+    color: #fff;
+}

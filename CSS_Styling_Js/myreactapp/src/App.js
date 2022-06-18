@@ -7,7 +7,7 @@ import Logo from './components/Logo';
 export default function App() {
     return (
         <div className="App">
-            <h1>Learn with Sumit</h1>
+            <h1>Kamrul Hasan</h1>
             <Logo />
         </div>
     );

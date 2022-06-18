@@ -1,13 +1,25 @@
-
+import { useState } from 'react';
+import styles from '../assets/css/Logo.module.css';
 
 export default function Logo() {
     // eslint-disable-next-line no-unused-vars
     
+    const [glassColor, setGlassColor] = useState('black');
 
     // pickColor randomly
+
+    const pickColorRandomly = ()=>{
+        const colors = ['red','green','blue','yellow','cyan'];
+        const color = colors[Math.floor(Math.random() * colors.length)];
+
+        return color;
+
+    }
+
+    const change = ()=> setGlassColor(pickColorRandomly());
     
     return (
-        <div className="logo">
+        <div className={styles.logo}>
             <div >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 153.16 126.87">
                     <g>
@@ -18,11 +30,13 @@ export default function Logo() {
                 </svg>
             </div>
 
-            <div className="glasses">
+            <div className={styles.glasses}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 103.63 42.68">
                     <g>
                         <g>
+                            
                             <rect
+                                className = {`${styles.coloredLine} border`}
                                 x="30.08"
                                 y="11.04"
                                 width="2.54"
@@ -31,11 +45,11 @@ export default function Logo() {
                                 transform="translate(-3.93 27.63) rotate(-45.04)"
                             />
                             <path
-                                
+                                 className = {`${styles.coloredLine} border`}
                                 d="M33.69,17.68a.83.83,0,0,0,1.17,0l.62-.62a.82.82,0,0,0,0-1.17l-7.8-7.8a.83.83,0,0,0-1.17,0l-.62.62a.83.83,0,0,0,0,1.17Z"
                             />
                             <rect
-                               
+                                className = {[styles.coloredLine,'border'].join(' ')}
                                 x="83.39"
                                 y="11.04"
                                 width="2.53"
@@ -44,7 +58,7 @@ export default function Logo() {
                                 transform="translate(11.72 65.35) rotate(-45.04)"
                             />
                             <rect
-                               
+                                className = {[styles.coloredLine,'border'].join(' ')}
                                 x="82.73"
                                 y="6.54"
                                 width="2.53"
@@ -53,6 +67,8 @@ export default function Logo() {
                                 transform="translate(15.45 63.11) rotate(-44.95)"
                             />
                             <path
+                               
+                                style = {{fill:glassColor}}
                                 d="M102,18.8H99.65a21.34,21.34,0,0,0-42.31-.5c-1.16.25-5.65.5-5.65.5s-4.23-.22-5.4-.45A21.34,21.34,0,0,0,4,18.8H1.65A1.65,1.65,0,0,0,0,20.45v1.79a1.65,1.65,0,0,0,1.65,1.65H4a21.34,21.34,0,0,0,42.32.47c1.19-.24,5.4-.47,5.4-.47s4.47.26,5.66.52a21.34,21.34,0,0,0,42.3-.52H102a1.65,1.65,0,0,0,1.65-1.65V20.45A1.65,1.65,0,0,0,102,18.8ZM25.16,37.6A16.26,16.26,0,1,1,41.42,21.34,16.26,16.26,0,0,1,25.16,37.6Zm53.31,0A16.26,16.26,0,1,1,94.72,21.34,16.26,16.26,0,0,1,78.47,37.6Z"
                             />
                         </g>
@@ -60,11 +76,11 @@ export default function Logo() {
                 </svg>
             </div>
 
-            <div className="play">
-                <button type="button" >
+            <div className={styles.play}>
+                <button type="button" onClick={change} >
                     Colorize Glass
                 </button>
-                <button type="button" >
+                <button type="button" onClick={()=> setGlassColor('black')}>
                     Reset Glass
                 </button>
             </div>

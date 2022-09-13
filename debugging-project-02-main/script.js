@@ -60,10 +60,12 @@ const getCartItems = () => {
 
 const switchTab = (id) => {
   if (id === "container") {
+    document.getElementById("container").textContent = ``;
     document.getElementById("container").style.display = "grid";
     document.getElementById("wishlist").style.display = "none";
     document.getElementById("cart").style.display = "none";
   } else if (id === "wishlist") {
+    document.getElementById("wishlist").textContent = ``;
     document.getElementById("wishlist").style.display = "grid";
     document.getElementById("container").style.display = "none";
     document.getElementById("cart").style.display = "none";
@@ -88,12 +90,12 @@ const showBooks = (books) => {
 };
 
 const createCard = (book) => {
-  console.log(book.image)
+  // console.log(book.image)
   const div = document.createElement("div");
   div.classList.add("card");
 
   let overview = book.overview;
-
+  console.log(overview)
   div.innerHTML = `
   <div class="image-container">
     <img
@@ -108,7 +110,7 @@ const createCard = (book) => {
   <div class="info-container">
     <h1>${book.name}</h1>
     <p>
-      ${overview}
+      ${overview ? overview.slice(0,40) : "N/A"}
     </p>
   </div>
 
@@ -124,6 +126,7 @@ const addToCart = (id) => {
 };
 
 const addToWishlist = (id) => {
+  
   if (wishlistItems.indexOf(id) === -1) {
     wishlistItems.push(id);
   }

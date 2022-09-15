@@ -22,15 +22,22 @@ const imageItself = document.getElementById('image');
 // ** set a counter 
 
 let index = 0;
+imageItself.textContent = ``;
 
 const sliderInterval = setInterval(()=>{
-    imageItself.textContent = ``;
-    const links = imageLinks[index]
-    if (index === imageLinks.length) {
-        index = 0;
+    
+    // const links = imageLinks[index]
+    // if (index === imageLinks.length) {
+    //     index = 0;
         
+    // }
+    imageItself.innerHTML = `
+    <img src="../images/pic-${index}.jpg" alt="" />
+    `
+    if (index === 9) {
+        // clearInterval(sliderInterval);
+        index = 0;
+        sliderInterval();
     }
-    imageItself.setAttribute('src',links);
-
     index++
 },1000)

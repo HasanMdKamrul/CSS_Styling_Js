@@ -22,7 +22,7 @@ const imageItself = document.getElementById('image');
 // ** set a counter 
 
 let index = 0;
-imageItself.textContent = ``;
+
 
 const sliderInterval = setInterval(()=>{
     
@@ -35,9 +35,11 @@ const sliderInterval = setInterval(()=>{
     <img src="../images/pic-${index}.jpg" alt="" />
     `
     if (index === 9) {
+        
         // clearInterval(sliderInterval);
         index = 0;
         sliderInterval();
+        imageItself.textContent = ``;
     }
     index++
 },1000)

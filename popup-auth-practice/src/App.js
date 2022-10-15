@@ -1,4 +1,4 @@
-import { FacebookAuthProvider, getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
+import { FacebookAuthProvider, getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup, signOut, TwitterAuthProvider } from 'firebase/auth';
 import { useState } from 'react';
 import './App.css';
 import app from './firebase/firebase.init';
@@ -10,6 +10,7 @@ function App() {
   const googleProvider = new GoogleAuthProvider();
   const gitHubprovider = new GithubAuthProvider();
   const FacebookProvider = new FacebookAuthProvider();
+  const twitterProvider = new TwitterAuthProvider()
 
   const [user,setUser] = useState({});
   const [message,setMessage]= useState("")
@@ -71,6 +72,20 @@ function App() {
 
     signInFb()
 
+  };
+
+  const handleSignInTwitter = ()=>{
+
+    const twitterSignIn = async ()=>{
+      try {
+        const result = await signInWithPopup(auth, twitterProvider);
+        console.log(result.user)
+        setUser(result.user)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    twitterSignIn()
   }
 
   const {uid,photoURL,displayName,email} = user;
@@ -91,6 +106,7 @@ function App() {
       <button onClick={handleSignIn}>SignIn</button>
       <button onClick={handleSignInGit}>SignInGit</button>
       <button onClick={handleSignInFb}>SignInFb</button>
+      <button onClick={handleSignInTwitter}>SignInTwitter</button>
       {
         message && <p>{message}</p>
       }
